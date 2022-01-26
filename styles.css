@@ -14,3 +14,29 @@ html {
   padding: 0;
   box-sizing: inherit;
 }
+
+.dndContainer {
+  /* Display & Box Model */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 5px;
+  grid-gap: 5px;
+  width: 300px;
+  height: 150px;
+  border: 1px solid black;
+  margin: 10px;
+}
+
+.dndContainer > div {
+  border: 1px solid red;
+}
+
+.item {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.item:hover {
+  cursor: default;
+}

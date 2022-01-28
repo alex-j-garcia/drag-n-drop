@@ -15,7 +15,7 @@ html {
   box-sizing: inherit;
 }
 
-.dndContainer {
+.dnd-container {
   /* Display & Box Model */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -28,15 +28,22 @@ html {
   margin: 10px;
 }
 
-.dndContainer > div {
+.dnd-container > div {
   border: 1px solid red;
 }
 
-.item {
+.dnd-item {
   font-size: 3rem;
   text-align: center;
 }
 
-.item:hover {
+.dnd-item:hover {
   cursor: default;
+}
+
+/* Source
+ * https://danoc.me/blog/css-prevent-copy/#an-elegant-solution-using-pseudo-elements
+ */
+[data-pseudo-content]::before {
+  content: attr(data-pseudo-content);
 }

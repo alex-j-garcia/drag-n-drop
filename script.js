@@ -9,16 +9,19 @@
   // The mousemove event's .toElement property indicates where the drag is
   // hovering over.
   let isDragging = false;
+  let deleteMe;
   function startDrag({target}) {
     let classes = Array.from(target.classList);
     if (classes.includes("dnd-item")) {
+      deleteMe = target;
       isDragging = true;
       dragArea.addEventListener("mousemove", onMove);
       dragArea.addEventListener("mouseup", onMouseUp);
     }
   }
 
-  function onMove({toElement}) {
+  function onMove(e) {
+    console.log(e.toElement);
     if (isDragging) {
       // I want to highlight where the element would be
       // dropped, as a visual cue. Unless the element is
@@ -26,7 +29,7 @@
       // When the value in toElement changes from one element to the
       // next, the styles need to be removed from the original element
       // and added to the next one.
-      
+
     }
   }
 

@@ -47,3 +47,7 @@ html {
 [data-pseudo-content]::before {
   content: attr(data-pseudo-content);
 }
+
+.drag-hover {
+  background-color: hsla(236, 86%, 66%, 0.5);
+}

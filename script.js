@@ -13,19 +13,25 @@
     let classes = Array.from(target.classList);
     if (classes.includes("dnd-item")) {
       isDragging = true;
-      dragArea.addEventListener("mousemove", setMove);
+      dragArea.addEventListener("mousemove", onMove);
       dragArea.addEventListener("mouseup", onMouseUp);
     }
   }
 
-  function setMove(event) {
+  function onMove({toElement}) {
     if (isDragging) {
-      console.log(event);
+      // I want to highlight where the element would be
+      // dropped, as a visual cue. Unless the element is
+      // the origin of the drag.
+      // When the value in toElement changes from one element to the
+      // next, the styles need to be removed from the original element
+      // and added to the next one.
+      
     }
   }
 
   function onMouseUp() {
-    dragArea.removeEventListener("mousemove", setMove);
+    dragArea.removeEventListener("mousemove", onMove);
     isDragging = false;
   }
 })();

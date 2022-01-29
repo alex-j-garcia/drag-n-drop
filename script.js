@@ -2,31 +2,28 @@
 
 (function() {
   let dragArea = document.querySelector(".dnd-container");
+  let cells = Array.from(dragArea.querySelectorAll("div"));
   dragArea.addEventListener("mousedown", startDrag);
-  // The mousemove event's .toElement property indicates where the drag is
-  // hovering over.
-  // let isDragging = false;
+
+  let isDragging = false;
   let draggedElement = null;
   function startDrag({target}) {
-    dragArea.addEventListener("mouseup", onDragEnd)
     let classes = Array.from(target.classList);
     if (classes.includes("dnd-item")) {
-      // isDragging = true;
+      target.classList.toggle("drag-hover");
+      isDragging = true;
       draggedElement = target;
-      // attachListeners();
+      attachListeners();
     }
   }
 
-  // function attachListeners() {
-  //   let cells = Array.from(dragArea.querySelectorAll("div"));
-  //   let openCells = cells.filter(div => !div.classList.length);
-  //   openCells.forEach(div => {
-  //     div.addEventListener("onmouseenter", toggleHighlight);
-  //     div.addEventListener("onmouseleave", toggleHighlight);
-  //   });
-  //   dragArea.addEventListener("mousemove", onMove);
-  //   dragArea.addEventListener("mouseup", onMouseUp);
-  // }
+  function attachListeners() {
+    cells.forEach(div => {
+      div.addEventListener("mouseenter", toggleHighlight);
+      div.addEventListener("mouseleave", toggleHighlight);
+    });
+    dragArea.addEventListener("mouseup", onDragEnd);
+  }
 
   function onMove({toElement}) {
     if (isDragging) {
@@ -43,17 +40,20 @@
   }
 
   function toggleHighlight({target}) {
-    if (target != draggedElement) {
-      hoveredElement.classList.toggle("drag-hover");
-    }
+    target.classList.toggle("drag-hover");
   }
 
   function onDragEnd({toElement}) {
     draggedElement.removeAttribute("data-pseudo-content");
     draggedElement.removeAttribute("class");
+    draggedElement = null;
     toElement.setAttribute("data-pseudo-content", "🗂️");
     toElement.classList.add("dnd-item");
-    draggedElement = null;
+    toElement.classList.remove("drag-hover");
     dragArea.removeEventListener("mouseup", onDragEnd);
+    cells.forEach(div => {
+      div.removeEventListener("mouseenter", toggleHighlight);
+      div.removeEventListener("mouseleave", toggleHighlight);
+    });
   }
 })();

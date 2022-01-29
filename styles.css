@@ -26,10 +26,6 @@ html {
   margin: 10px;
 }
 
-.dnd-container > div {
-  border: 1px solid red;
-}
-
 .dnd-item {
   font-size: 3rem;
   text-align: center;
@@ -47,5 +43,5 @@ html {
 }
 
 .drag-hover {
-  background-color: hsla(236, 86%, 66%, 0.5);
+  background-color: hsla(236, 86%, 66%, 0.2);
 }

@@ -3,9 +3,6 @@
 (function() {
   let dragArea = document.querySelector(".dnd-container");
   dragArea.addEventListener("mousedown", startDrag);
-  // if the element is of the type we're looking for, add a mousemove event
-  // listener to it (this MUST be removed on mouseup otherwise it could have
-  // too many listeners attached).
   // The mousemove event's .toElement property indicates where the drag is
   // hovering over.
   // let isDragging = false;
@@ -57,5 +54,6 @@
     toElement.setAttribute("data-pseudo-content", "🗂️");
     toElement.classList.add("dnd-item");
     draggedElement = null;
+    dragArea.removeEventListener("mouseup", onDragEnd);
   }
 })();

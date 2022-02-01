@@ -32,14 +32,6 @@
       shadow.style.left = (event.pageX - 25) + "px";
       shadow.style.top = (event.pageY - 25) + "px";
       dragArea.appendChild(shadow);
-      // *** Most crucial step is to have a reference to the original element --> done
-      // I want to highlight where the element would be
-      // dropped, as a visual cue. Unless the element is
-      // the origin of the drag.
-      // When the value in toElement changes from one element to the
-      // next, the styles need to be removed from the original element
-      // and added to the next one.
-      // Make the image opaque as it's being dragged with a declaration of opacity: 0.5
     }
   }
 

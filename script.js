@@ -7,7 +7,9 @@
 
   let isDragging = false;
   let draggedElement = null;
-  function startDrag({target}) {
+  function startDrag(event) {
+    event.preventDefault();
+    let {target} = event;
     let classes = Array.from(target.classList);
     if (classes.includes("dnd-item")) {
       target.classList.toggle("drag-hover");

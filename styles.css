@@ -16,6 +16,9 @@ html {
 }
 
 .dnd-container {
+  /* Positioning */
+  position: relative;
+
   /* Display & Box Model */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -26,7 +29,7 @@ html {
   margin: 10px;
 }
 
-.dnd-item {
+.dnd-container > div {
   font-size: 3rem;
   text-align: center;
 }
@@ -44,4 +47,12 @@ html {
 
 .drag-hover {
   background-color: hsla(236, 86%, 66%, 0.2);
+}
+
+.shadow {
+  /* Positioning */
+  position: absolute;
+
+  /* Other */
+  opacity: 0.2;
 }

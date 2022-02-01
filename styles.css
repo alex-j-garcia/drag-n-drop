@@ -34,10 +34,6 @@ html {
   text-align: center;
 }
 
-.dnd-item:hover {
-  cursor: default;
-}
-
 /* Source
  * https://danoc.me/blog/css-prevent-copy/#an-elegant-solution-using-pseudo-elements
  */
@@ -55,4 +51,5 @@ html {
 
   /* Other */
   opacity: 0.2;
+  pointer-events: none;
 }

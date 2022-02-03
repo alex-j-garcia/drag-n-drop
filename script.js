@@ -28,12 +28,17 @@
     });
   }
 
+  let scheduled = null;
   function onMove(event) {
-    if (isDragging) {
-      let shadow = removeShadow() || createShadow();
-      shadow.style.left = (event.pageX - 25) + "px";
-      shadow.style.top = (event.pageY - 25) + "px";
-      dragArea.appendChild(shadow);
+    if (isDragging && !scheduled) {
+      setTimeout(() => {
+        let shadow = removeShadow() || createShadow();
+        shadow.style.left = (event.pageX - 25) + "px";
+        shadow.style.top = (event.pageY - 25) + "px";
+        if (!draggedElement) removeShadow();
+        else dragArea.appendChild(shadow);
+        scheduled = null;
+      }, 150);
     }
   }
 
